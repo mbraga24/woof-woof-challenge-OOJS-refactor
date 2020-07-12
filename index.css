@@ -37,13 +37,13 @@
   text-align: center;
 }
 
-#dog-info {
+#dog-info-container {
   display: flex;
   flex-flow: column;
   align-items: center;
 }
 
-#dog-info img {
+#dog-info-container img {
   max-width: 75vw;
   max-height: 25vw;
 }

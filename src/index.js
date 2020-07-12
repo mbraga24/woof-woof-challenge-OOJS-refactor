@@ -2,8 +2,6 @@ const adapter = new APIAdapter("http://localhost:3000/dogs", {
     "Content-Type": "application/json"
 })
 
-let filtering = false;
-
 const dogPageBar = document.querySelector('#dog-bar')
 const dogInfoContainer = document.querySelector('#dog-info-container')
 const goodDogFilter = document.querySelector('#good-dog-filter')
@@ -23,7 +21,7 @@ function chooseDogs() {
 
 adapter.initialFetch()
 .then(dogsData => {
-  const filterDogs = new FilterDogs(dogsData, filtering)
+  const filterDogs = new FilterDogs(dogsData, filtering = false)
   filterDogs.renderDogs()
   chooseDogs()
 })

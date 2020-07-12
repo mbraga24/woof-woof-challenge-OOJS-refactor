@@ -4,7 +4,7 @@ class DogCard {
     this.parentElement = parentElement
   }
 
-  handleIsGoodDogBtn = (event) => {
+  handleIsGoodDogBtn = () => {
     this.dog.isGoodDog = !this.dog.isGoodDog
     this.renderCard(this.dog)
 
@@ -12,7 +12,7 @@ class DogCard {
     .then(updatedDog => updatedDog)
   }
 
- renderCard(dog) {
+ renderCard() {
     const status = this.dog.isGoodDog ? "Good" : "Bad"
 
     this.parentElement.innerHTML = `

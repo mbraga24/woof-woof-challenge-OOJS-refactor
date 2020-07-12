@@ -5,7 +5,7 @@ class DogBar {
     this.onClick = callbacks.onClick
   }
 
-  handleBarSelection = (event) => {
+  handleBarSelection = () => {
     this.onClick(this.dog)
   }
 
