@@ -1,7 +1,12 @@
 class DogBar {
-  constructor(dog, parentElement) {
+  constructor(dog, parentElement, callbacks) {
     this.dog = dog
     this.parentElement = parentElement
+    this.onClick = callbacks.onClick
+  }
+
+  handleBarSelection = (event) => {
+    this.onClick(this.dog)
   }
 
   renderDog() {
@@ -10,14 +15,6 @@ class DogBar {
     this.dogSpan.dataset.id = this.dog.id
     this.parentElement.append(this.dogSpan)
 
-    this.parentElement.addEventListener('click', (event) => {
-      if (event.target.tagName === 'SPAN') {
-        const foundDog = dogsArray.find(dog => dog.id === this.dog.id)
-        const dogCard = new DogCard(dog, this.parentElement)
-        dogCard.renderCard(foundDog)
-      }
-    })
+    this.dogSpan.addEventListener('click', this.handleBarSelection)
   }
-
-
 }
