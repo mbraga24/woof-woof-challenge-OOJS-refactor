@@ -6,13 +6,10 @@ const dogBar = document.querySelector('#dog-bar')
 const dogInfo = document.querySelector('#dog-info')
 const goodDogFilter = document.querySelector('#good-dog-filter')
 
-// - The button's text should change from "Filter good dogs: OFF" to "Filter good dogs: ON", or vice versa.
-// - If the button now says "ON" (meaning the filter is on), then the Dog Bar should only show dogs whose isGoodDog attribute is true. 
-// If the filter is off, the Dog Bar should show all dogs (like normal).
 goodDogFilter.addEventListener('click', () => {
   filtering = !filtering
-    goodDogFilter.innerText = `Filter good dogs: ${filtering ? "ON" : "OFF"}`
-    renderAllDogs()
+  goodDogFilter.innerText = `Filter good dogs: ${filtering ? "ON" : "OFF"}`
+  renderAllDogs()
 })
 
 dogBar.addEventListener('click', (event) => {
@@ -24,7 +21,6 @@ dogBar.addEventListener('click', (event) => {
 })
 
 dogInfo.addEventListener('click', (event) => {
-  
   if (event.target.tagName === "BUTTON") {
     const dogId = parseInt(event.target.dataset.id)
     const foundDog = dogsArray.find(dog => dog.id === dogId)
@@ -64,13 +60,13 @@ function renderAllDogs() {
 
   if (filtering) {
     goodDogs = dogsArray.filter(dog => dog.isGoodDog === true)
-    goodDogs.forEach(renderEachDog)
+    goodDogs.forEach(renderEachDogToBar)
   } else {
-    dogsArray.forEach(renderEachDog)
+    dogsArray.forEach(renderEachDogToBar)
   }
 }
 
-function renderEachDog(dog) {
+function renderEachDogToBar(dog) {
   const dogSpan = document.createElement('span')
   dogSpan.innerText = dog.name
   dogSpan.dataset.id = dog.id
